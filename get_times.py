@@ -7,10 +7,6 @@ import datetime
 from astropy import time, coordinates as coord, units as u
 from prettytable import *
 
-def NGTS_orion_to_HJD(NGTS_orion_date):
-    hjd_0 = 2450000.000000 # 1995-10-09 12:00:00.00 converted to JD
-    return NGTS_orion_date + hjd_0
-
 def obs_window(start, end):
     obs_times = [start, end]
     obs_window = time.Time(obs_times, format='isot', scale='utc')
@@ -52,9 +48,9 @@ def observable_transits(period, epoch, width, obs_window, utc_offset):
 ########################################
 
 #Object properties
-period = 1.2345678       # days
-epoch = 7765.1234567     # Orion format (without 245)
-width = 1.23456          # hours
+period = 1.2345678      # days
+epoch = 2457765.1234567     # JD/HJD/BJD
+width = 1.23456         # hours
 
 #Observing period
 obs_start   = "2018-01-24T12:00:00" # UTC
@@ -62,9 +58,6 @@ obs_end     = "2018-02-07T12:00:00" # UTC
 utc_offset = +2 # offset from UTC to LT in hours
 
 #########################################
-
-#Conversions
-epoch = NGTS_orion_to_HJD(epoch)
 
 #Get observing window in JD
 window = obs_window(obs_start, obs_end)
