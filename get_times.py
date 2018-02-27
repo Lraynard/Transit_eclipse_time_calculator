@@ -1,6 +1,5 @@
 import sys
 import numpy as np
-from fitsio import FITS
 from astropy.table import Table
 import datetime
 from astropy import time, coordinates as coord, units as u
