@@ -2,7 +2,7 @@
 Script to predict future transit and eclipse times using known:
     period, epoch, duration
 
-Dependencies: astropy numpy prettytable datetime
+Dependencies: astropy, numpy, prettytable, datetime
 
 To predict transits/eclipses, edit the following lines of the get_times.py script and run:
 
