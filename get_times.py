@@ -1,5 +1,4 @@
 import sys
-sys.path.append('/home/sw/anaconda.bak/lib/python2.7/site-packages')
 import numpy as np
 from fitsio import FITS
 from astropy.table import Table
