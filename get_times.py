@@ -1,17 +1,21 @@
 import sys
 import numpy as np
-from astropy.table import Table
 import datetime
+from astropy.table import Table
 from astropy import time, coordinates as coord, units as u
 from prettytable import *
 
 def obs_window(start, end):
+    ''' returns a time window in JD format '''
+    
     obs_times = [start, end]
     obs_window = time.Time(obs_times, format='isot', scale='utc')
     obs_window = obs_window.jd
     return obs_window
 
 def observable_transits(period, epoch, width, obs_window, utc_offset):
+    ''' returns list of future transit events in a given window '''
+    
     transit = epoch
     times = [transit]
     num = [1]
@@ -45,22 +49,22 @@ def observable_transits(period, epoch, width, obs_window, utc_offset):
 
 ########################################
 
-#Object properties
+# Object properties
 period = 1.2345678      # days
 epoch = 2457765.1234567     # JD/HJD/BJD
 width = 1.23456         # hours
 
-#Observing period
+# Observing period
 obs_start   = "2018-01-24T12:00:00" # UTC
 obs_end     = "2018-02-07T12:00:00" # UTC
 utc_offset = +2 # offset from UTC to LT in hours
 
 #########################################
 
-#Get observing window in JD
+# Get observing window in JD
 window = obs_window(obs_start, obs_end)
 
-#Get transit times
+# Get transit times
 try:
     times = observable_transits(period, epoch, width, window, utc_offset)
 except:
@@ -71,7 +75,7 @@ try:
 except:
     secondary_times = ''
 
-#Print times
+# Print times
 print "period (days): %s" %period
 print "epoch (HJD): %s" %epoch
 print "width (hours): %s" %width
